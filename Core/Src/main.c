@@ -144,10 +144,10 @@ int main(void)
 
 
   //TODO:
-  for(uint8_t i = 0; i <8; i++)
-  {
-	  slaveID += SwitchValue[i] * pow(2,i);
-  }
+//  for(uint8_t i = 0; i <8; i++)
+//  {
+//	  slaveID += SwitchValue[i] * pow(2,i);
+//  }
 
   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ADCVALUE, 16);
 
