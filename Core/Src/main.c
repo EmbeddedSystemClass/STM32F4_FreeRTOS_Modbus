@@ -63,7 +63,7 @@ osThreadId ModbusSetTaskHandle;
 /* USER CODE BEGIN PV */
 uint8_t SLAVEID[8];
 uint8_t ADCVALUE[16];
-uint8_t slaveID = 0;
+uint8_t slaveID = 1;
 uint8_t SwitchValue[8];
 /* USER CODE END PV */
 
@@ -82,7 +82,19 @@ void ModbusSetThread(void const * argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+#ifdef __cplusplus
+ extern "C" {
+#endif
 
+ int __io_putchar(int ch)
+ {
+     HAL_UART_Transmit(&huart6, (uint8_t *)&ch, 1, 0xFFFF);
+     return ch;
+ }
+
+#ifdef __cplusplus
+}
+#endif
 /* USER CODE END 0 */
 
 /**
@@ -117,6 +129,7 @@ int main(void)
   MX_USART6_UART_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
+  printf("System start\r\n");
   delay_init(16);
 
   //TODO:
